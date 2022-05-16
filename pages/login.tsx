@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Header from '../components/Header'
 import useAuth from '../hooks/useAuth'
@@ -61,7 +61,10 @@ function Login() {
               type="email"
               placeholder="Email"
               className="input"
-              {...register('email', { required: true })}
+              {...register('email', {
+                value: 'demo@netflix.com',
+                required: true,
+              })}
             />
             {errors.email && (
               <p className="p-1 text-[13px] font-light text-orange-500">
@@ -74,7 +77,7 @@ function Login() {
               type="password"
               placeholder="Password"
               className="input"
-              {...register('password', { required: true })}
+              {...register('password', { value: 'password', required: true })}
             />
             {errors.password && (
               <p className="p-1 text-[13px] font-light text-orange-500">
